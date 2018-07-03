@@ -1,21 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+// import logo from './logo.svg'
+import './App.css'
+import emails from './db.json'
+import MessageList from './components/MessageList'
+import Toolbar from './components/Toolbar'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      emails: emails
+    }
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Toolbar />
+        <MessageList emails={this.state.emails} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
